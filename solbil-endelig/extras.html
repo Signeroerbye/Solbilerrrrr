@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="mystyle.css" />
+   <title>Solbiler | Forside</title>
+</head>
+
+<style>
+   button {
+      margin-bottom: 100px;
+   }
+</style>
+
+<body>
+
+   <nav>
+      <h1>
+         <a href="index.html">SolBiler ApS</a>
+      </h1>
+
+      <ul>
+         <li>
+            <a href="omsolbiler.html">Om os</a>
+         </li>
+
+         <li>
+            <a href="#" class="login">Log ind</a>
+         </li>
+      </ul>
+   </nav>
+
+   <main>
+      <div id="rental_details">
+         <h3>Du har valgt</h3>
+        
+         <dl>
+            <dt>Biltype:</dt>
+            <dd id="rental_car"></dd>
+             <br>
+            <dt>Antal dage:</dt>
+            <dd id="rental_days"></dd>
+            <br>
+            <dt>Lejepris:</dt>
+            <dd id="rental_price"></dd>
+         </dl>
+      </div>
+   </main>
+
+   <div class="extras">
+      <div class="extra1">
+        <br>
+        <br>
+         <h3 class="overskrift">Vælg ekstraudstyr</h3>
+
+         <form action="kunde.html" id="form">
+            <label>
+               <input type="checkbox" name="extra" value="199" />
+               Ekstra chauffør: 199kr
+            </label>
+            
+            <label>
+               <input type="checkbox" name="extra" value="139" />
+               Barnesæde (0-4 år): 139kr
+            </label>
+             
+            <label>
+               <input type="checkbox" name="extra" value="159" />
+               Barnesæde (4-8 år): 159kr
+            </label>
+            <br>
+            <label>
+               <input type="checkbox" name="extra" value="169" />
+               GPS: 169kr
+            </label>
+            
+            <label>
+               <input type="checkbox" name="extra" value="249" />
+               Forsikring: 249kr
+            </label>
+
+
+             
+            <p><br>ekstraudstyr inklusiv moms:
+               <span id="ialt">0</span>
+               kr
+            </p>
+            <button type="sumbit" class="button"> Videre</button>
+         </form>
+    
+    <!-- Javascript-funktion for udregning af pris -->
+<script>
+const form=document.querySelector("form");
+    const ialt=document.getElementById("ialt");
+    
+    form.addEventListener("change", function(){
+        let pris  = 0
+        for (const extra of form.extra){
+            if (extra.checked === true){
+                pris += addVat(Number(extra.value));}}
+        
+        ialt.innerText=pris;
+        });  
+
+    
+function addVat(price) {
+    return price * 1.25;
+}
+
+form.addEventListener("submit", function(event) {
+    // Beregn pris for det valgte ekstraudstyr
+    let extrasPrice = 0;
+    let extrasList = [];
+    for (const item of this.elements.extra) {
+        if (item.checked === true) {
+            const numericValue = Number(item.value);
+            extrasPrice += addVat(numericValue);
+            extrasList.push(item.parentNode.innerText);
+        }
+    }
+    sessionStorage.setItem("extras-price", extrasPrice);
+    sessionStorage.setItem("extras-list", extrasList.join(", "));
+    
+    // Gem også de øvrige oplysninger overført via URL parametre
+    sessionStorage.setItem("rental-car", url.searchParams.get("car"));
+    sessionStorage.setItem("days", url.searchParams.get("days"));
+    sessionStorage.setItem("price", url.searchParams.get("price"));
+});
+
+
+      const url = new URL(window.location.href);
+      document.getElementById("rental_car").innerText =
+        url.searchParams.get("car");
+      document.getElementById("rental_days").innerText =
+        url.searchParams.get("days");
+      document.getElementById("rental_price").innerText =
+        url.searchParams.get("price");
+    </script>
+      </div>
+   </div>
+
+    
+
+   <footer><span>© 2021 Solbiler ApS</span></footer>
+
+</body>
+
+</html>

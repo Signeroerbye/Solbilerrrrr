@@ -1,0 +1,30 @@
+[
+
+  {
+    "name": "Fiat",
+    "imageSrc": "images/fiat.png",
+    "category": "Budget",
+    "personCount": 4,
+    "luggageCount": 1,
+    "dailySurcharge": "0"
+  },
+    {
+        "name": "BMW",
+        "imageSrc": "images/bmw.jpg",
+        "category": "Mellemklasse",
+        "personCount": 5,
+        "luggageCount": 3,
+        "dailySurcharge": "20"
+      },
+    
+      {
+        "name": "Volvo",
+        "imageSrc": "images/volvo.jpg",
+        "category": "Minivan",
+        "personCount": 7,
+        "luggageCount": 4,
+        "dailySurcharge": "40"
+      }
+
+
+]

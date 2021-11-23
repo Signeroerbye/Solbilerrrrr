@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <script src="extras.js" defer></script>
+   <script src="script.js" defer></script>
+   <link rel="stylesheet" href="mystyle.css" />
+  
+ 
+
+   <title>Solbiler ApS</title>
+</head>
+
+<body>
+   <nav>
+      <h1>
+         <a href="index.html">SolBiler ApS</a>
+      </h1>
+
+      <ul>
+         <li>
+            <a href="omsolbiler.html">Om os</a>
+         </li>
+
+         <li>
+            <a href="#" class="login">Log ind</a>
+         </li>
+      </ul>
+   </nav>
+
+
+   <main>
+      <div class="hero">
+         <img class="forsidebillede" src="car.jpg" alt="familie i bil">
+         <div class="search_box">
+           
+            <h2>Find bilen for dig</h2>
+            <form method="post">
+               <div class="row">
+                  <div>
+                     <label for="jeg_henter_den">Jeg henter den</label>
+                     <input type="date" name="date_from" id="date_from" placeholder="dd/mm/åååå" />
+                  </div>
+                  <div>
+                     <label for="jeg_afleverer_den">Jeg afleverer den</label>
+                     <input type="date" name="date_to" id="date_to" placeholder="dd/mm/åååå" />
+                  </div>
+               </div>
+               <div class="row">
+                  <div>
+                     <label for="person_count">Antal personer</label>
+                     <input type="number" value="1" min="1" max="5" name="person_count" id="person_count" />
+                  </div>
+                  <div>
+                     <label for="luggage_count">Antal kufferter</label>
+                     <select name="luggage_count" id="luggage_count">
+                        <option value="0">0 - 1 taske</option>
+                        <option value="1">1 kuffert</option>
+                        <option value="2">2 kufferter</option>
+                        <option value="3">3 kufferter</option>
+                        <option value="4">4 kufferter</option>
+                     </select>
+                  </div>
+               </div>
+               <button type="submit" id="search_button">Søg</button>
+            </form>
+         </div>
+      </div>
+
+
+      <section id="cars_list"></section>
+   </main>
+
+   <template id="car_template">
+      <article class="car">
+         <img width="200" height="100" />
+         <h1></h1>
+         <dl>
+            <dt>Kategori</dt>
+            <br>
+            <dd class="category"></dd>
+            <br>
+            <dt>Personer</dt>
+            <dd class="person_count"></dd>
+            <br>
+            <dt>Kufferter</dt>
+            <dd class="luggage_count"></dd>
+         </dl>
+         <div>
+            <p class="price"></p>
+            <a href="extras.html" class="book">Book nu</a>
+         </div>
+      </article>
+   </template>
+
+         <template id="skabelon_output">
+            <div class="flexbox">
+                <div>
+                    <img class="bil">
+                </div>
+                <div>
+                    <h2 class="bilnavn"></h2>
+                </div>
+                <div>
+                    <p class="kategori"></p>
+                </div>
+                <div>
+                    <p class="personCount"></p>
+                </div>  <div>
+                    <p class="luggageCount"></p>
+                </div>
+                <div>
+                    <h3 id="pris"></h3>
+                    <button class="booknu"></button>
+                </div>
+            </div>
+
+        </template>
+
+
+
+</body>
+
+</html>
